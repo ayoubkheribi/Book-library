@@ -1,30 +1,29 @@
-import React from 'react'
-import { useState } from 'react';
-import SearchBar from '../components/SearchBar';
+import { useState } from "react";
+import SearchBar from "../components/SearchBar";
+import BookList from "../components/BookList";
+import React from "react";
 
-
-const HomePage = () => {
+function HomePage() {
+  const [query, setQuery] = useState("");
   const [books, setBooks] = useState([]);
-  
-  function fetchBooks(query) {
-    fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`)
-      .then(response => response.json())
-      .then(data => setBooks(data.items || []))
-      .catch(error => console.error('Error fetching books:', error));
-  }
+
+    const searchBooks = async () => {
+    if (!query) return;
+    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
+    const data = await response.json();
+    setBooks(data.items || []);
+  };
 
   return (
     <div>
-      <SearchBar onSearch={fetchBooks} />
-      <div className="book-list">
-        {books.map((book, index) => (
-          <div key={index} className="book-item">
-            <h3>{book.volumeInfo.title}</h3>
-            <p>{book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Unknown Author'}</p>
-            <p>{book.volumeInfo.publishedDate}</p>
-          </div>
-        ))}
-      </div>
+      <h1>Your Go To Book Library</h1>
+      <SearchBar query={query} setQuery={setQuery} onSearch={searchBooks} />
+
+      {books.length > 0 ? (
+        <BookList books={books} />
+      ) : (
+        <p>Search for a book</p>
+      )}
     </div>
   );
 }
