@@ -7,12 +7,10 @@ function App() {
   
   return (
     <div>
-
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/book/:id' element={<BookDetailsPage />} />
       </Routes>
-
     </div>
   )
 }
