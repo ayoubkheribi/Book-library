@@ -15,8 +15,8 @@ function HomePage() {
   };
 
   return (
-    <div>
-      <h1>Your Go To Book Library</h1>
+    <div className="container mx-auto p-4 flex flex-col items-center mt-20">
+      <h1 className="">Your Go To Book Library</h1>
       <SearchBar query={query} setQuery={setQuery} onSearch={searchBooks} />
 
       {books.length > 0 ? (
