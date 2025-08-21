@@ -16,13 +16,13 @@ function HomePage() {
 
   return (
     <div className="container mx-auto p-4 flex flex-col items-center mt-20">
-      <h1 className="">Your Go To Book Library</h1>
+      <h1 className="text-2xl mb-10">Your Go To Book Library</h1>
       <SearchBar query={query} setQuery={setQuery} onSearch={searchBooks} />
 
       {books.length > 0 ? (
         <BookList books={books} />
       ) : (
-        <p>Search for a book</p>
+        <p className="text-2xl mt-3">Our Recomndations</p>
       )}
     </div>
   );
