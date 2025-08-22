@@ -9,6 +9,7 @@ function HomePage() {
   const [error, setError] = useState("");   
   const [loading, setLoading] = useState(false); 
   const [filter, setFilter] = useState("all");
+  const categories = ["Fiction", "Non-Fiction", "Science", "History"];
 
   const searchBooks = async () => {
     if (!query) return;
@@ -45,6 +46,19 @@ function HomePage() {
     }
   };
 
+  const searchByCategory = async (category) => {
+    try {
+      const response = await fetch(
+        `https://www.googleapis.com/books/v1/volumes?q=subject:${category}`
+      );
+      const data = await response.json();
+      setBooks(data.items || []);
+      setError(null);
+    } catch (err) {
+      setError("Failed to load category books.");
+    }
+  };
+
   return (
     <div className="container mx-auto p-4 flex flex-col items-center mt-20">
       <h1 className="text-2xl mb-10">Your Go To Book Library</h1>
@@ -53,12 +67,24 @@ function HomePage() {
         <select
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
-          className="border border-[#6b4f4f] px-2 py-1 rounded bg-inherit"
+          className="border-2 border-[#6b4f4f] px-2 py-1 rounded bg-inherit hover:bg-[#d8ccab]"
         >
-          <option className="bg-inherit" value="all">All</option>
-          <option className="bg-inherit" value="title">Title</option>
-          <option className="bg-inherit" value="author">Author</option>
+          <option value="all">All</option>
+          <option value="title">Title</option>
+          <option value="author">Author</option>
         </select>
+      </div>
+
+      <div className="flex gap-4 my-6">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => searchByCategory(cat)}
+            className="px-4 py-2 border-2 border-[#6b4f4f] rounded hover:bg-[#d8ccab]"
+          >
+            {cat}
+          </button>
+        ))}
       </div>
 
       <SearchBar query={query} setQuery={setQuery} onSearch={searchBooks} />
