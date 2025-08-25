@@ -14,6 +14,7 @@ function BookList() {
           title={book.volumeInfo.title}
           authors={book.volumeInfo.authors}
           thumbnail={book.volumeInfo.imageLinks?.thumbnail}
+          publisher={book.volumeInfo.publisher}
         />
       ))}
     </div>

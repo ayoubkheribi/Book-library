@@ -30,14 +30,17 @@ function BookDetails() {
         <p className="text-[#6b4f4f] mb-1">
           <span className="font-semibold">Authors:</span> {book.volumeInfo.authors?.join(", ")}
         </p>
+        <p className="text-[#6b4f4f] mb-4">
+          <span className="font-semibold">Publisher:</span> {book.volumeInfo.publisher}
+        </p>
+        <p className="text-[#6b4f4f] mb-4">
+          <span className="font-semibold">Published:</span> {book.volumeInfo.publishedDate}
+        </p>
         <p className="text-[#6b4f4f] mb-1">
           <span className="font-semibold">Pages:</span> {book.volumeInfo.pageCount ?? "N/A"}
         </p>
         <p className="text-[#6b4f4f] mb-1">
           <span className="font-semibold">Categories:</span> {book.volumeInfo.categories?.join(", ") ?? "N/A"}
-        </p>
-        <p className="text-[#6b4f4f] mb-4">
-          <span className="font-semibold">Published:</span> {book.volumeInfo.publishedDate}
         </p>
         {book.volumeInfo.imageLinks?.thumbnail && (
           <div className="flex justify-center mb-4">
