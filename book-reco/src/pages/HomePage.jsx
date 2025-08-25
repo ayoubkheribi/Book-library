@@ -64,7 +64,7 @@ function HomePage() {
 
   return (
     <div className="container mx-auto p-4 flex flex-col items-center mt-20">
-      <h1 className="text-2xl mb-10">Your Go To Book Library</h1>
+      <h1 className="text-3xl mb-10">Your Go To Book Library</h1>
 
       <div className=" flex gap-3 mb-4">
         <select
@@ -94,13 +94,13 @@ function HomePage() {
 
       {loading && <p className="text-2xl mt-4 text-black ">Loading...</p>}
 
-      {error && <p className="text-2xl mt-4 text-black">{error}</p>}
+      {error && <p className="text-2xl mt-4 text-[#dc0000]">{error}</p>}
 
       {!loading && !error && books.length > 0 ? (
         <BookList />
       ) : (
         !loading && !error && (
-          <p className="text-2xl mt-3">Search Your First Book With BookReco</p>
+          <p className="text-2xl mt-3">Search Your First Book With Book<span className="text-[#89481c]">.Reco</span></p>
         )
       )}
     </div>
