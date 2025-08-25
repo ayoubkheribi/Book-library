@@ -1,14 +1,17 @@
-import { useState } from "react";
 import SearchBar from "../components/SearchBar";
 import BookList from "../components/BookList";
+import useBookStore from "../store/useBookStore";
 import React from "react";
 
 function HomePage() {
-  const [query, setQuery] = useState("");
-  const [books, setBooks] = useState([]);
-  const [error, setError] = useState("");   
-  const [loading, setLoading] = useState(false); 
-  const [filter, setFilter] = useState("all");
+  const {
+    query, setQuery,
+    books, setBooks,
+    error, setError,
+    loading, setLoading,
+    filter, setFilter
+  } = useBookStore();
+
   const categories = ["Fiction", "Non-Fiction", "Science", "History"];
 
   const searchBooks = async () => {
@@ -87,17 +90,17 @@ function HomePage() {
         ))}
       </div>
 
-      <SearchBar query={query} setQuery={setQuery} onSearch={searchBooks} />
+      <SearchBar onSearch={searchBooks} />
 
       {loading && <p className="text-2xl mt-4 text-black ">Loading...</p>}
 
       {error && <p className="text-2xl mt-4 text-black">{error}</p>}
 
       {!loading && !error && books.length > 0 ? (
-        <BookList books={books} />
+        <BookList />
       ) : (
         !loading && !error && (
-          <p className="text-2xl mt-3">Our Recommendations</p>
+          <p className="text-2xl mt-3">Search Your First Book With BookReco</p>
         )
       )}
     </div>
