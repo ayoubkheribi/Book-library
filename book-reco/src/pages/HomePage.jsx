@@ -1,7 +1,7 @@
 import SearchBar from "../components/SearchBar";
 import BookList from "../components/BookList";
 import useBookStore from "../store/useBookStore";
-import React from "react";
+import axios from "axios";
 
 function HomePage() {
   const {
@@ -25,15 +25,11 @@ function HomePage() {
     if (filter === "author") searchQuery = `inauthor:${query}`;
 
     try {
-      const response = await fetch(
+      const response = await axios.get(
         `https://www.googleapis.com/books/v1/volumes?q=${searchQuery}`
       );
 
-      if (!response.ok) {
-        throw new Error("Failed to fetch books. Please try again later.");
-      }
-
-      const data = await response.json();
+      const data = response.data;
 
       if (!data.items || data.items.length === 0) {
         setError("No books found. Try another search.");
@@ -51,10 +47,10 @@ function HomePage() {
 
   const searchByCategory = async (category) => {
     try {
-      const response = await fetch(
+      const response = await axios.get(
         `https://www.googleapis.com/books/v1/volumes?q=subject:${category}`
       );
-      const data = await response.json();
+      const data = response.data;
       setBooks(data.items || []);
       setError(null);
     } catch (err) {
@@ -108,4 +104,3 @@ function HomePage() {
 }
 
 export default HomePage;
-
