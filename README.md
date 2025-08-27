@@ -1,14 +1,19 @@
 # Book Library App
 
-A simple web application for managing and recommending books.
+A simple React app to search for books and view their details using the Google Books API.
 
 ## Features
 
-- Search and filter books by title, author, or genre
-- View detailed information about each book
-- Get personalized book recommendations
+- Search for books by keyword
+- View a list of search results
+- Click a book to see detailed information
+- Reload-safe details page (fetches book by ID)
+- Back to search button for easy navigation
 
-## Technologies Used
+## Tech Stack
 
-- Frontend: React, tailwindcss
-- 
+- **React** – frontend library
+- **Axios** – for API requests
+- **Zustand** – state management
+- **React Router** – navigation
+- **Tailwindcss** – for styling
