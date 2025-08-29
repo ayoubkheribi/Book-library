@@ -12,7 +12,7 @@ const  Navbar = ({menuOpen, setMenuOpen}) => {
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="text-2xl text-black font-bold hover:text-[#753e0e]">
-          <img src={logo} alt="Book.Reco Logo" className="h-10 w-10" />
+          <img src='assets/logo.png' alt="Book.Reco Logo" className="h-10 w-10" />
           Book <span className='text-[#753e0e] hover:text-black'>.Reco</span></Link>
           <div className="w-7 h-5 relative cursor-pointer z-40 md:hidden" onClick={() => setMenuOpen((prev) => !prev)}>
             &#9776;
