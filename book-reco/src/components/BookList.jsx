@@ -6,17 +6,19 @@ function BookList() {
   const { books } = useBookStore();
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      {books.map((book) => (
-        <BookCard
-          key={book.id}
-          id={book.id}
-          title={book.volumeInfo.title}
-          authors={book.volumeInfo.authors}
-          thumbnail={book.volumeInfo.imageLinks?.thumbnail}
-          publisher={book.volumeInfo.publisher}
-        />
-      ))}
+    <div className="mt-10 w-full flex flex-col items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {books.map((book) => (
+          <BookCard
+            key={book.id}
+            id={book.id}
+            title={book.volumeInfo.title}
+            authors={book.volumeInfo.authors}
+            thumbnail={book.volumeInfo.imageLinks?.thumbnail}
+            publisher={book.volumeInfo.publisher}
+          />
+        ))}
+      </div>
     </div>
   );
 }
