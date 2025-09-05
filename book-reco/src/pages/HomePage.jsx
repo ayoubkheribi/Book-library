@@ -14,7 +14,6 @@ function HomePage() {
     recommendations
   } = useBookStore();
 
-  // Load recommendations via hook
   useRecommendations();
 
   const categories = ["Fiction", "Non-Fiction", "Science", "History"];
@@ -65,28 +64,26 @@ function HomePage() {
 
   return (
     <div className="container mx-auto p-4 flex flex-col items-center mt-20">
-      <h1 className="text-3xl mb-10">Your Go To Book Library</h1>
+      <h1 className="text-3xl text-[#1e3a8a] mb-10">Your Go To Book Library</h1>
 
-      {/* Filter */}
-      <div className=" flex gap-3 mb-4">
+      <div className=" text-[#1e3a8a] border-[#1e3a8a] flex gap-3 mb-4">
         <select
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
-          className="border-2 border-[#6b4f4f] px-2 py-1 rounded bg-inherit hover:bg-[#d8ccab]"
+          className="border-2 border-[#1e3a8a] px-2 py-1 rounded bg-inherit hover:bg-[#e9eff7]"
         >
-          <option value="all">All</option>
-          <option value="title">Title</option>
-          <option value="author">Author</option>
+          <option className="text-[#1e3a8a]" value="all">All</option>
+          <option className="text-[#1e3a8a]" value="title">Title</option>
+          <option className="text-[#1e3a8a]" value="author">Author</option>
         </select>
       </div>
 
-      {/* Categories */}
       <div className="flex gap-4 my-6">
         {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => searchByCategory(cat)}
-            className="px-4 py-2 border-2 border-[#6b4f4f] rounded hover:bg-[#d8ccab]"
+            className="text-[#1e3a8a] px-4 py-2 border-2 bg-[#f5f9ff] border-[#1e3a8a]  rounded hover:bg-[#e6ebf3]"
           >
             {cat}
           </button>
@@ -95,7 +92,7 @@ function HomePage() {
 
       <SearchBar onSearch={searchBooks} />
 
-      {loading && <p className="text-2xl mt-4 text-black ">Loading...</p>}
+      {loading && <p className="text-2xl mt-4 text-[#1e3a8a] ">Loading...</p>}
 
       {error && <p className="text-2xl mt-4 text-[#dc0000]">{error}</p>}
 
@@ -105,14 +102,13 @@ function HomePage() {
         !loading &&
         !error && (
           <>
-            <p className="text-2xl mt-3">
-              Search Your First Book With Book<span className="text-[#89481c]">.Reco</span>
+            <p className="text-2xl text-[#1e3a8a] mt-3">
+              Search Your First Book With Book.Reco
             </p>
 
-            {/* 🔥 Recommended Books */}
             {recommendations.length > 0 && (
               <div className="mt-10 w-full flex flex-col items-center">
-                <h2 className="text-2xl font-semibold mb-4 ">Recommended for You</h2>
+                <h2 className="text-2xl font-semibold mb-4 text-[#1e3a8a] ">Recommended for You</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                   {recommendations.slice(0, 6).map((book) => (
                     <BookCard

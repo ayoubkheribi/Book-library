@@ -2,12 +2,15 @@ const About = () => {
 
 
   return (
-    <div className="text-xl container p-6 min-h-screen flex flex-col items-center justify-center">
-      <h1 >About</h1>
-      <p className="lg:max-w-xl">
-        Welcome to BookReco! We are passionate about helping readers discover their next favorite book.
-        Our platform provides personalized recommendations, reviews, and a vibrant community for book lovers.
-        Whether you’re into fiction, non-fiction, or anything in between, BookReco is here to guide your reading journey.
+    <div className="text-xl container p-6 min-h-screen flex flex-col items-center justify-center text-center">
+      <h1 className="text-[#1e3a8a] text-3xl font-bold mb-4">About BookReco</h1>
+      <p className="text-[#5e7ac6] lg:max-w-xl mx-auto mb-4">
+        BookReco was created to make discovering great books effortless and enjoyable.
+        We combine thoughtful recommendations, honest reviews, and a welcoming community to help readers find books that resonate with them.
+        Whether you're exploring a new genre, building a reading list, or looking for your next favorite author, BookReco is designed to inspire your next read.
+      </p>
+      <p className="text-[#27418f] lg:max-w-lg mx-auto italic">
+        Built with care by Ayoub Kheribi — Founder & Creator
       </p>
     </div>
   )

@@ -18,10 +18,10 @@ function SearchBar({ onSearch }) {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search for books..."
-        className="border-2 border-[#6b4f4f] rounded-md px-3 py-2 w-full sm:w-80 bg-[#fff8dc] text-[#3b2f2f] text-xl"
+        className="border-2 border-[#1e3a8a] rounded-md px-3 py-2 w-full sm:w-80 bg-[#f5f9ff] text-[#1e3a8a] text-xl"
 
       />
-      <button onClick={onSearch} className="bg-[#753e0e] text-xl text-white px-4 py-2 rounded-md hover:bg-[#834b1a]" type="submit">Search</button>
+      <button onClick={onSearch} className="bg-[#1e3a8a] text-xl text-[#e5e5e5] px-4 py-2 hover:bg-[#304c9b] rounded-md " type="submit">Search</button>
     </form>
   );
 }
