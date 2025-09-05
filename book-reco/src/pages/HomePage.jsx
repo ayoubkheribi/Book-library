@@ -78,16 +78,39 @@ function HomePage() {
         </select>
       </div>
 
-      <div className="flex gap-4 my-6">
+      {/* Category buttons for medium+ screens */}
+      <div className="hidden md:flex gap-4 my-6">
         {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => searchByCategory(cat)}
-            className="text-[#1e3a8a] px-4 py-2 border-2 bg-[#f5f9ff] border-[#1e3a8a]  rounded hover:bg-[#e6ebf3]"
+            className="text-[#1e3a8a] px-4 py-2 border-2 bg-[#f5f9ff] border-[#1e3a8a] rounded hover:bg-[#e6ebf3]"
           >
             {cat}
           </button>
         ))}
+      </div>
+
+      {/* Category dropdown for small screens */}
+      <div className="w-full flex justify-center my-6 md:hidden">
+        <select
+          defaultValue=""
+          onChange={(e) => {
+            const val = e.target.value;
+            if (val) searchByCategory(val);
+          }}
+          className="w-3/4 text-[#1e3a8a] px-4 py-2 border-2 bg-[#f5f9ff] border-[#1e3a8a] rounded hover:bg-[#e6ebf3]"
+          aria-label="Select category"
+        >
+          <option value="" disabled>
+            Select category
+          </option>
+          {categories.map((cat) => (
+            <option key={cat} value={cat}>
+              {cat}
+            </option>
+          ))}
+        </select>
       </div>
 
       <SearchBar onSearch={searchBooks} />
@@ -102,10 +125,11 @@ function HomePage() {
         !loading &&
         !error && (
           <>
-            <p className="text-2xl text-[#1e3a8a] mt-3">
-              Search Your First Book With Book.Reco
-            </p>
-
+            <div className="mt-10 w-full flex flex-col items-center ">
+              <p className="text-2xl text-[#1e3a8a] mt-3">
+                Search Your First Book With Book.Reco
+              </p>
+            </div>
             {recommendations.length > 0 && (
               <div className="mt-10 w-full flex flex-col items-center">
                 <h2 className="text-2xl font-semibold mb-4 text-[#1e3a8a] ">Recommended for You</h2>
