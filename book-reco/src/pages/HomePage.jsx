@@ -78,7 +78,6 @@ function HomePage() {
         </select>
       </div>
 
-      {/* Category buttons for medium+ screens */}
       <div className="hidden md:flex gap-4 my-6">
         {categories.map((cat) => (
           <button
@@ -91,7 +90,6 @@ function HomePage() {
         ))}
       </div>
 
-      {/* Category dropdown for small screens */}
       <div className="w-full flex justify-center my-6 md:hidden">
         <select
           defaultValue=""
@@ -119,7 +117,7 @@ function HomePage() {
 
       {error && <p className="text-2xl mt-4 text-[#dc0000]">{error}</p>}
 
-      {!loading && !error && books.length > 0 ? (
+      {!loading && !error && (books?.length > 0) ? (
         <BookList />
       ) : (
         !loading &&
@@ -130,7 +128,7 @@ function HomePage() {
                 Search Your First Book With Book.Reco
               </p>
             </div>
-            {recommendations.length > 0 && (
+            {recommendations?.length > 0 && (
               <div className="mt-10 w-full flex flex-col items-center">
                 <h2 className="text-2xl font-semibold mb-4 text-[#1e3a8a] ">Recommended for You</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
